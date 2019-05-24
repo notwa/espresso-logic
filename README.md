@@ -7,7 +7,6 @@ The original source code comes from the [University of California, Berkeley](htt
 ## Install
 
 ```
-$ cd espresso-src
 $ make
 ```
 

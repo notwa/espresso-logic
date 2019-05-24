@@ -1,8 +1,8 @@
-SRC := $(wildcard *.c)
+SRC := $(wildcard espresso-src/*.c)
 
 OBJ := ${SRC:.c=.o}
 
-TARGETDIR := ../bin
+TARGETDIR := bin
 TARGET := $(TARGETDIR)/espresso
 
 all: prepare $(TARGET)

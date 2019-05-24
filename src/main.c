@@ -501,6 +501,7 @@ int main(int argc, char **argv)
 	break;
     }
 
+    case KEY_unknown: break;
 
     }
 

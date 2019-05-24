@@ -289,7 +289,7 @@ start:
 
   if (debug & TAUT) {
       printf("UNATE_REDUCTION: %d unate variables, reduced to %ld\n",
-    cdata.vars_unate, CUBELISTSIZE(T));
+    cdata.vars_unate, (long) CUBELISTSIZE(T));
   }
   goto start;
 
@@ -413,7 +413,7 @@ start:
 
   if (debug & TAUT) {
       printf("UNATE_REDUCTION: %d unate variables, reduced to %ld\n",
-    cdata.vars_unate, CUBELISTSIZE(T));
+    cdata.vars_unate, (long) CUBELISTSIZE(T));
   }
   goto start;
     }

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *strdup(const char * src) {
+char *strdup_reimpl(const char * src) {
   char * dup;
   unsigned int len;
 

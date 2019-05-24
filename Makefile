@@ -1,7 +1,8 @@
 SRC := $(wildcard src/*.c)
 OBJ := ${SRC:.c=.o}
 
-CFLAGS ?= -Wall -O3 -s
+CPPFLAGS ?= -D__USE_MINGW_ANSI_STDIO
+CFLAGS ?= -Wall -Wno-misleading-indentation -O3 -s
 
 TARGETDIR := bin
 TARGET := $(TARGETDIR)/espresso

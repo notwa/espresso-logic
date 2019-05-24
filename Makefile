@@ -1,4 +1,4 @@
-SRC := $(wildcard espresso-src/*.c)
+SRC := $(wildcard src/*.c)
 
 OBJ := ${SRC:.c=.o}
 

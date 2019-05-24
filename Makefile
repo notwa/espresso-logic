@@ -1,6 +1,7 @@
 SRC := $(wildcard src/*.c)
-
 OBJ := ${SRC:.c=.o}
+
+CFLAGS ?= -Wall -O3 -s
 
 TARGETDIR := bin
 TARGET := $(TARGETDIR)/espresso

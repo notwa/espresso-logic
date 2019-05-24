@@ -1,7 +1,10 @@
 SRC := $(wildcard src/*.c)
 OBJ := ${SRC:.c=.o}
 
-CPPFLAGS ?= -D__USE_MINGW_ANSI_STDIO
+# inlining hacks are now disabled by default because:
+# - compilers are much better than they used to be.
+# - computers are much faster than they used to be.
+CPPFLAGS ?= -DNO_INLINE -D__USE_MINGW_ANSI_STDIO
 CFLAGS ?= -Wall -Wno-misleading-indentation -O3 -s
 
 TARGETDIR := bin

@@ -30,6 +30,8 @@ void fprint_pla(FILE *fp, pPLA PLA, int output_type)
 	pls_output(PLA);
     } else if (output_type == EQNTOTT_type) {
 	eqn_output(PLA);
+    } else if (output_type == CNF_type) {
+	cnf_output(PLA);
     } else if (output_type == KISS_type) {
 	kiss_output(fp, PLA);
     } else {
@@ -241,6 +243,55 @@ void eqn_output(pPLA PLA)
 		printf(")"), col += 1;
 	    }
 	printf(";\n\n");
+    }
+}
+
+
+/*
+    cnf output mode -- output DIMACS conjunctive normal form
+*/
+void cnf_output(pPLA PLA)
+{
+    register pcube p, last;
+    register int i, var, enum_index;
+    int x;
+
+    if (cube.output == -1)
+	fatal("Cannot have no-output function for CNF output mode");
+    if (cube.num_mv_vars != 1)
+	fatal("Must have binary-valued function for CNF output mode");
+    makeup_labels(PLA);
+
+    for(i = 0; i < cube.part_size[cube.output]; i++) {
+	/* Begin a cnf file for each output */
+	printf("p cnf %i %i\n", cube.num_binary_vars, (PLA->F)->count);
+	printf("c ");
+	if (PLA->phase != (pcube) NULL && is_in_set(PLA->phase,i))
+	    printf("sat");
+	else
+	    printf("unsat");
+	printf(" = %s\n", OUTLABEL(i));
+
+	/* Describe each index */
+	enum_index = 0;
+	for(var = 0; var < cube.num_binary_vars; var++)
+	    printf("c %i = %s\n", ++enum_index, INLABEL(var));
+
+	/* Write the product of sums for this output */
+	foreach_set(PLA->F, last, p) {
+	    enum_index = 0;
+	    if (is_in_set(p, i + cube.first_part[cube.output])) {
+		for(var = 0; var < cube.num_binary_vars; var++) {
+		    enum_index++;
+		    if ((x=GETINPUT(p, var)) != DASH) {
+			if (x != ZERO)
+			    printf("-");
+			printf("%i ", enum_index);
+		    }
+		}
+		printf("0\n");
+	    }
+	}
     }
 }
 

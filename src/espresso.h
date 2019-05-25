@@ -316,6 +316,7 @@ typedef struct {
 #define R_type          4
 #define PLEASURE_type   8               /* output format */
 #define EQNTOTT_type    16              /* output format algebraic eqns */
+#define CNF_type        32              /* output format cnf */
 #define KISS_type	128		/* output format kiss */
 #define CONSTRAINTS_type	256	/* output the constraints (numeric) */
 #define SYMBOLIC_CONSTRAINTS_type 512	/* output the constraints (symbolic) */
@@ -581,6 +582,7 @@ extern struct cdata_struct cdata, temp_cdata_save;
 /* cvrout.c */ extern void debug1_print (pset_family T, char *name, int num);
 /* cvrout.c */ extern void debug_print (pset *T, char *name, int level);
 /* cvrout.c */ extern void eqn_output (pPLA PLA);
+/* cvrout.c */ extern void cnf_output (pPLA PLA);
 /* cvrout.c */ extern void fpr_header (FILE *fp, pPLA PLA, int output_type);
 /* cvrout.c */ extern void fprint_pla (FILE *fp, pPLA PLA, int output_type);
 /* cvrout.c */ extern void pls_group (pPLA PLA, FILE *fp);

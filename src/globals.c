@@ -45,6 +45,7 @@ struct pla_types_struct pla_types[] = {
     {"-pleasure", PLEASURE_type},
     {"-eqn", EQNTOTT_type},
     {"-eqntott", EQNTOTT_type},
+    {"-cnf", CNF_type},
     {"-kiss", KISS_type},
     {"-cons", CONSTRAINTS_type},
     {"-scons", SYMBOLIC_CONSTRAINTS_type},
